@@ -1,0 +1,19 @@
+  100 LOMEM = LOMEM + &200
+  110 S% = LOMEM - &200
+  120 FOR N% = 0 TO 2 STEP 2
+  130 P% = S%
+  140 [OPT N%
+  150 LDY #0
+  160 .LOOP
+  170 LDA H%,Y
+  180 BEQ DONE
+  190 JSR &FFEE
+  200 INY
+  210 BNE LOOP
+  220 .DONE
+  230 RTS
+  240 ]
+  250 H% = P%
+  260 $H% = "Hello World!" + CHR$(13) + CHR$(10) + CHR$(0)
+  270 NEXT
+  280 CALL S%
